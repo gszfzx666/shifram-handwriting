@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>拾帧工具 - 一键生成手写文稿</title>
+<link rel="icon" href="img/logo.a5f914db.png">
+<link href="css/fonts.css" rel="stylesheet">
+<link href="css/newui.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">拾</div>
+    <div class="brand-txt"><b>拾帧工具</b><span>HANDWRITING STUDIO</span></div>
+  </div>
+  <nav class="topnav">
+    <div class="nav-item active"><span class="nav-text">首页</span></div>
+    <div class="nav-item"><span class="nav-text">超级DIY</span></div>
+    <div class="nav-item"><span class="nav-text">教程</span></div>
+    <div class="nav-item"><span class="nav-text">FAQ</span></div>
+  </nav>
+  <div class="topbadge">本地运行 · 文字不上传</div>
+</header>
+
+<main class="workspace">
+  <!-- 左侧：控制区 -->
+  <section class="col-left">
+
+    <div class="card">
+      <h2 class="card-h"><i class="n">1</i> 输入内容</h2>
+      <div class="file-upload">
+        <div class="file-upload-area">
+          <label class="file-btn" for="word-file">＋ 选择文件</label>
+          <input id="word-file" type="file" accept=".doc,.docx,.jpg,.jpeg,.png,.pdf">
+          <button class="right-button ghost" type="button">✎ 仅输入文字</button>
+          <button class="no-word-button ghost" type="button">✦ 填入示例文字</button>
+        </div>
+      </div>
+      <p class="hint">支持 Word / PDF / 图片 / 直接粘贴文字</p>
+    </div>
+
+    <div class="card">
+      <h2 class="card-h"><i class="n">2</i> 转换设置</h2>
+
+      <label class="field" for="font-select">手写字体</label>
+      <select id="font-select" class="styled-select sel">
+        <option value="0">栗壳坚坚体</option>
+        <option value="7">平方洒脱体（官网手写 · 推荐）</option>
+        <option value="12">硬笔楷书</option>
+        <option value="4">新叶念体</option>
+        <option value="6">手写体1</option>
+        <option value="14">真实手写体2</option>
+        <option value="15">真实手写体3</option>
+        <option value="1015">真实手写体3 · 加粗</option>
+        <option value="16">真实手写体4</option>
+        <option value="1016">真实手写体4 · 加粗</option>
+        <option value="8">王强手写体</option>
+        <option value="1">喜脉喜欢体</option>
+        <option value="2">ChillZhuo</option>
+        <option value="3">pigtruman手写体</option>
+        <option value="17">真实手写体5</option>
+        <option value="1017">真实手写体5 · 加粗</option>
+        <option value="18">真实手写体6</option>
+        <option value="1018">真实手写体6 · 加粗</option>
+        <option value="19">真实手写体7</option>
+        <option value="1019">真实手写体7 · 加粗</option>
+        <option value="20">真实手写体8</option>
+        <option value="1020">真实手写体8 · 加粗</option>
+        <option value="21">真实手写体9</option>
+        <option value="1021">真实手写体9 · 加粗</option>
+        <option value="22">真实手写体10</option>
+        <option value="1022">真实手写体10 · 加粗</option>
+        <option value="23">真实手写体11</option>
+        <option value="1023">真实手写体11 · 加粗</option>
+        <option value="24">真实手写体12</option>
+        <option value="1024">真实手写体12 · 加粗</option>
+        <option value="13">繁体 · 辰宇落雁体</option>
+        <option value="9">日文 · TekitouPoem</option>
+        <option value="10">韩文 · KimjungchulScript</option>
+        <option value="25">其他语言</option>
+      </select>
+
+      <label class="field" for="paper-select">纸张背景</label>
+      <select id="paper-select" class="styled-select sel">
+        <option value="41">实拍 · 红格子稿纸</option>
+        <option value="42">可打印 · 黑格子稿纸</option>
+        <option value="43">可打印 · 红格子稿纸</option>
+        <option value="20">实拍 · 单红线信稿纸</option>
+        <option value="30">可打印 · 单红线A4信稿纸</option>
+        <option value="0">草稿纸 · 高清实拍</option>
+        <option value="1">可打印 · A4纵向 600dpi</option>
+        <option value="2">可打印 · A4横向 600dpi</option>
+        <option value="3">可打印 · B5纵向 600dpi</option>
+        <option value="4">可打印 · B5横向 600dpi</option>
+        <option value="5">可打印 · A3纵向 600dpi</option>
+        <option value="6">可打印 · A3横向 600dpi</option>
+        <option value="22">可打印 · 单红线宽边距</option>
+      </select>
+
+      <div class="slider-row">
+        <label>随机勾画涂改概率 (3%)</label>
+        <input type="range" id="mistake-rate" min="0" max="100" step="1" value="3">
+      </div>
+      <div class="slider-row">
+        <label>文字位置凌乱度 (10%)</label>
+        <input type="range" id="messy-ratio" min="0" max="100" step="1" value="10">
+      </div>
+      <div class="slider-row">
+        <label>字体笔画凌乱度 (5%)</label>
+        <input type="range" id="char-random" min="0" max="100" step="1" value="5">
+      </div>
+    </div>
+
+    <button class="preview-button" type="button">生成手写预览</button>
+  </section>
+
+  <!-- 右侧：预览区 -->
+  <section class="col-right">
+    <div class="card preview-card">
+      <div class="preview-head">
+        <h2 class="card-h">预览效果</h2>
+        <button class="download-button" type="button" disabled title="请先生成预览">下载高清无水印 ZIP</button>
+      </div>
+      <div class="preview-container">
+        <div class="preview-placeholder">
+          <div class="ph-icon">✎</div>
+          <p>输入内容并点击「生成手写预览」</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="vendor/jszip.min.js"></script>
+<script src="js/fonts.js"></script>
+<script src="js/zx.js"></script>
+<script src="js/papers.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/parser.js"></script>
+<script src="js/exporter.js"></script>
+<script src="js/aiwriter.js"></script>
+<script src="app_official.js"></script>
+</body>
+</html>

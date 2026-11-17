@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>超级DIY | 自定义背景 — 拾帧工具 · 手写转换</title>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="logo"><span class="mark">拾</span>拾帧工具<small>手写转换 · 本地版</small></div>
+  <nav class="nav">
+    <a href="index.html">首页 · 手写转换</a>
+    <a class="on" href="superdiy.html">超级DIY · 自定义背景</a>
+    <a href="guide.html">常见问题解答</a>
+    <a href="zxtrain.html">ZX 真迹字库扩充</a>
+  </nav>
+  <div class="topright"><span class="badge">框选填写 · 自动扩页最多 10 页</span></div>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <div><h1>超级DIY | 自定义纸张背景</h1>
+      <p>上传自己的稿纸 / 表格 / 作业纸 PDF 或图片，框选要填写的区域，逐区域设置文字与字体样式</p></div>
+    <div class="chips"><span class="chip">支持 PDF / 图片</span><span class="chip">多区域框选</span><span class="chip">填表格模式</span><span class="chip">自动扩页 ≤10 页</span></div>
+  </div>
+
+  <div class="diylayout">
+    <div>
+      <div class="card">
+        <h2><span class="t"><span class="n">1</span>上传背景 PDF / 图片</span><span class="hint"><a href="guide.html">查看教程</a></span></h2>
+        <div class="body">
+          <div class="drop" id="diyDrop">
+            <div class="ic">🗂️</div>
+            <div class="t1">点击选择 PDF 或图片</div>
+            <div class="t2">支持格子纸、作业纸、表格等；建议先用夸克扫成 PDF</div>
+          </div>
+          <input type="file" id="diyFile" accept=".pdf,.png,.jpg,.jpeg,.webp,.bmp" style="display:none">
+          <div class="filelist" id="diyFileList"></div>
+          <p class="help">如果 PDF 显示不全，按住 Ctrl 键滚动鼠标滚轮可放大浏览器视图。</p>
+          <div class="row" style="margin-top:10px">
+            <label class="fld"><span>输出格式</span><select id="diyFormat"><option value="zip">ZIP（多页 PNG）</option><option value="pdf">PDF</option><option value="png">PNG（第 1 页）</option></select></label>
+            <label class="fld"><span>自动扩页上限</span><select id="diyMaxPages"><option>1</option><option>3</option><option>5</option><option selected>10</option></select></label>
+          </div>
+          <label class="fld"><span>文件名</span><input type="text" id="diyName" value="超级DIY手写稿"></label>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><span class="t"><span class="n">2</span>框选与区域编辑</span><span class="hint" id="diyRegionCount">0 个区域</span></h2>
+        <div class="body">
+          <div class="btnrow" style="margin-bottom:10px">
+            <button class="btn primary sm" id="btnStartSelect">✂ 开始框选</button>
+            <button class="btn ghost sm" id="btnClearRegions">清空区域</button>
+          </div>
+          <div id="regionList"><p class="help">还没有区域。点击「开始框选」，然后在右侧底图上按住鼠标拖出一个矩形。</p></div>
+          <details class="adv" style="margin-top:10px">
+            <summary>新区域默认样式</summary>
+            <div class="inner">
+              <label class="fld"><span>字体</span><select id="diyFont"></select></label>
+              <div class="row">
+                <label class="fld"><span>字号 <em id="diyFsVal">22 px</em></span><input type="range" id="diyFontSize" min="10" max="60" value="22"></label>
+                <label class="fld"><span>字迹颜色</span><input type="color" id="diyColor" value="#1b2b45"></label>
+              </div>
+              <div class="row">
+                <label class="fld"><span>处理方式</span><select id="diyMode"><option value="flow">自定义背景（连续书写）</option><option value="table">填表格（逐格填字）</option></select></label>
+                <label class="fld"><span>凌乱度 <em id="diyJitterVal">8%</em></span><input type="range" id="diyJitter" min="0" max="60" value="8"></label>
+              </div>
+              <div class="row">
+                <label class="fld"><span>行数（填表格）</span><input type="number" id="diyRows" value="3" min="1" max="40"></label>
+                <label class="fld"><span>列数（填表格）</span><input type="number" id="diyCols" value="6" min="1" max="40"></label>
+              </div>
+            </div>
+          </details>
+          <div class="btnrow" style="margin-top:12px">
+            <button class="btn primary" id="btnDiyConvert">▶ 开始转换</button>
+            <button class="btn accent" id="btnDiyDownload">⬇ 下载文件</button>
+          </div>
+          <p class="help">认真选择每个区域的处理方式与行列数；框选位置尽可能贴近文字，尽量框住段落而不是整篇文章，注意不要框到边界线或表格线。</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="previewcard">
+        <div class="pvhead">
+          <span class="ttl" id="diyStageTitle">背景预览 / 框选区</span>
+          <div class="pvtools">
+            <button class="btn ghost sm" id="btnDiyBack">返回框选</button>
+            <span id="diyStatus">等待上传背景…</span>
+          </div>
+        </div>
+        <div class="progress" id="diyProgress"><i id="diyProgressBar"></i></div>
+        <div id="diyStage">
+          <div class="empty"><div class="ic">📐</div><div class="t1">请先上传背景 PDF 或图片</div><div class="t2">上传后点击「开始框选」，在图上拖出填写区域</div></div>
+          <canvas id="diyCanvas" style="display:none"></canvas>
+          <div id="diyOverlay"></div>
+          <div id="diyRegions"></div>
+        </div>
+        <div class="status"><span>提示：预览为压缩图，下载文件为高清无水印版本</span><span id="diyPages">0 页</span></div>
+      </div>
+
+      <div class="panel" style="margin-top:14px">
+        <h3>使用说明</h3>
+        <ol>
+          <li>先在上方上传您的 PDF 文件（支持格子纸、作业纸、表格等；建议先用夸克扫成 PDF）</li>
+          <li>注意：如果 PDF 显示不全则按住 Ctrl 键滚动鼠标滚轮放大</li>
+          <li>点击「开始框选」按钮，在 PDF 上框选要填写的区域</li>
+          <li>在左侧编辑每个区域的文字内容和字体样式</li>
+          <li>认真选择每个区域的处理方式（自定义背景 / 填表格）、行列数</li>
+          <li>在「文字内容」框里面检查 / 填入自己想要的文字</li>
+          <li>点击「开始转换」按钮生成预览文件</li>
+          <li>确认效果后点击「下载文件」保存结果</li>
+          <li>注意：自动扩页上限为 10 页，如果需要更多页请分多次操作</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="diyToast"></div>
+
+<script src="vendor/jszip.min.js"></script>
+<script src="vendor/pdf.min.js"></script>
+<script src="js/fonts.js"></script>
+<script src="js/zx.js"></script>
+<script src="js/papers.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/exporter.js"></script>
+<script src="js/diy.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+/* 手写字体注册：文件字体 + 系统内置字体回退 */
+@font-face{font-family:"HW_OfficialRecon";src:url("../fonts/official_recon.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_zx";src:url("../fonts/zx.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_MaShanZheng";src:url("../fonts/MaShanZheng_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_ZhiMangXing";src:url("../fonts/ZhiMangXing_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_LongCang";src:url("../fonts/LongCang_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_LiuJianMaoCao";src:url("../fonts/LiuJianMaoCao_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_ZCOOLKuaiLe";src:url("../fonts/ZCOOLKuaiLe_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_ZCOOLXiaoWei";src:url("../fonts/ZCOOLXiaoWei_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_KleeOne";src:url("../fonts/KleeOne_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_YujiSyuku";src:url("../fonts/YujiSyuku_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_NanumPenScript";src:url("../fonts/NanumPenScript_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_Caveat";src:url("../fonts/Caveat_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_Kalam";src:url("../fonts/Kalam_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_PatrickHand";src:url("../fonts/PatrickHand_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_GloriaHallelujah";src:url("../fonts/GloriaHallelujah_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_ShadowsIntoLight";src:url("../fonts/ShadowsIntoLight_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_IndieFlower";src:url("../fonts/IndieFlower_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_DancingScript";src:url("../fonts/DancingScript_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_STXingkai";src:local("STXingkai"),local("华文行楷");font-display:block}
+@font-face{font-family:"HW_KaiTi";src:local("KaiTi"),local("楷体"),local("simkai");font-display:block}
+@font-face{font-family:"HW_STKaiti";src:local("STKaiti"),local("华文楷体");font-display:block}
+@font-face{font-family:"HW_FZShuTi";src:local("FZShuTi"),local("方正舒体");font-display:block}
+@font-face{font-family:"HW_YouYuan";src:local("YouYuan"),local("幼圆"),local("SIMYOU");font-display:block}
+@font-face{font-family:"HW_XinWei";src:local("STXinwei"),local("华文新魏");font-display:block}
+@font-face{font-family:"HW_LiShu";src:local("LiSu"),local("隶书");font-display:block}
+@font-face{font-family:"HW_FangSong";src:local("FangSong"),local("仿宋"),local("simfang");font-display:block}
+@font-face{font-family:"HW_CaiYun";src:local("STCaiyun"),local("华文彩云");font-display:block}
+@font-face{font-family:"HW_Mistral";src:local("Mistral");font-display:block}
+@font-face{font-family:"HW_Pristina";src:local("Pristina");font-display:block}

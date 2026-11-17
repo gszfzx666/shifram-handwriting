@@ -1,0 +1,31 @@
+# ===== 构建产物 / 打包 exe（体积大、可由源码重建）=====
+build/
+dist/
+*.exe
+*.spec.bak
+
+# ===== Python 缓存 =====
+__pycache__/
+*.py[cod]
+*.pyc
+*.log
+
+# ===== 原始手写照片与中间数据（隐私，严禁公开）=====
+assets/zx/source/
+assets/zx/zx_cells.npz
+assets/zx/zx_atlas_frozen.json
+assets/zx/zx_atlas_frozen.png
+assets/zx/zx_build_info.json
+img/login-qrcode.*.jpg
+
+# ===== 调试 / 抓取脚本与截图 =====
+shot_final.mjs
+tools_render.mjs
+tools_compare.html
+*_profile/
+.edge*
+_body.html
+clone_home.png
+local_render.png
+final_page.png
+url.txt
