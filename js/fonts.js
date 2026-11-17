@@ -63,7 +63,8 @@
   const LIST = [];
   // 官网字形逆向库：从官网服务端渲染结果逐字抠出并矢量化，字形与官网平方洒脱体一致
   LIST.push(F('official', '平方洒脱体【官网字形逆向】', '官网逆向', '"HW_OfficialRecon"', {
-    sizeScale: 1.0, jitterScale: 0.35, tracking: 0.1, ink: 1, bold: 0, slant: 0
+    sizeScale: 1.0, jitterScale: 0.35, tracking: 0.1, ink: 1, bold: 0, slant: 0,
+    narrowAscii: true, asciiFamily: '"HW_Caveat"'
   }));
   // 我的真迹字库：从 9 张真实手写照片提取笔迹，逐字随机取真迹变体
   LIST.push(F('zx', 'zx（我的手写 · 真迹字库）', '我的手写', '"HW_zx"', {

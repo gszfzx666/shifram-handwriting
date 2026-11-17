@@ -60,7 +60,7 @@
     return {
       fontId: fid,
       paperKey: pk,
-      fontSize: pk === 'photo-redline' ? 38 : 22,
+      fontSize: pk === 'photo-redline' ? 31 : 22,
       lineHeight: 1.9,
       letterSpacing: 0,
       paragraphIndent: 2,

@@ -110,6 +110,18 @@
       var zw = HWZX.width(ch) / 1000 * fontSize;
       if (zw > 0) return zw;
     }
+    // 逆向官网字体：ASCII 字形 advance 被统一烘焙成全角(1000)，直接 measureText
+    // 会把每个英文字母拉成一整格（"Organizer" 散成 "Or g Ani Z e r"）。
+    // 这里对 ASCII 按真实手写比例收窄步长，汉字仍走 measureText 保持全角。
+    if (font && font.narrowAscii) {
+      var cp = ch.codePointAt(0);
+      if (cp >= 0x21 && cp <= 0x7e) {
+        if (ch >= 'a' && ch <= 'z') return fontSize * 0.52;
+        if (ch >= 'A' && ch <= 'Z') return fontSize * 0.62;
+        if (ch >= '0' && ch <= '9') return fontSize * 0.55;
+        return fontSize * 0.38; // ASCII 标点/符号
+      }
+    }
     return ctx.measureText(ch).width || fontSize * 0.5;
   }
 
@@ -483,7 +495,13 @@
         ctx.globalAlpha = c.alpha * wA * 0.92;
         ctx.fillStyle = color;
         var drawer = function (g) {
-          g.font = fontString(font, layout.fontSize);
+          // 逆向官网字体的 ASCII 字形未成功逆向（全角且非手写），
+          // 改用连笔手写回退字体渲染英文/数字，观感对齐官网的斜体连写。
+          var cp0 = c.ch.codePointAt(0);
+          var useAscii = font && font.narrowAscii && font.asciiFamily && cp0 >= 0x21 && cp0 <= 0x7e;
+          g.font = fontString(useAscii
+            ? Object.assign({}, font, { family: font.asciiFamily })
+            : font, layout.fontSize);
           g.textBaseline = 'alphabetic';
           g.textAlign = 'left';
           g.fillStyle = color;
