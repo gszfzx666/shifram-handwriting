@@ -61,8 +61,15 @@
   ];
 
   const LIST = [];
-  // 官网字形逆向库：从官网服务端渲染结果逐字抠出并矢量化，字形与官网平方洒脱体一致
-  LIST.push(F('official', '平方洒脱体【官网字形逆向】', '官网逆向', '"HW_OfficialRecon"', {
+  // 开源洒脱体：以开源手写字体(马善政楷书, SIL OFL 授权)为基底，叠加引擎的逐字形变/牵丝/墨感二次加工。
+  // 完全无授权顾虑，观感对齐官网平方洒脱体；ASCII 走 Caveat 连写避免英文散开。
+  LIST.push(F('opensource', '开源洒脱体（二次加工·无授权顾虑）', '开源推荐', '"HW_MaShanZheng"', {
+    sizeScale: 1.02, jitterScale: 0.85, tracking: -0.2, ink: 1, bold: 0, slant: 0,
+    narrowAscii: true, asciiFamily: '"HW_Caveat"'
+  }));
+  // 官网字形高清重建库：用自有激活码从官网付费高清稿纸(400dpi)渲染全部字形并矢量化，
+  // 字形与官网平方洒脱体一致且清晰度远超旧的 33px 逆向版；ASCII 走 Caveat 连写避免英文散开。
+  LIST.push(F('official', '平方洒脱体【官网高清字形】', '官网字形', '"HW_OfficialRecon"', {
     sizeScale: 1.0, jitterScale: 0.35, tracking: 0.1, ink: 1, bold: 0, slant: 0,
     narrowAscii: true, asciiFamily: '"HW_Caveat"'
   }));
