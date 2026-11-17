@@ -200,10 +200,14 @@
     // 滑块实时更新标签
     [['#mistake-rate', '随机勾画涂改概率'], ['#messy-ratio', '文字位置凌乱度'], ['#char-random', '字体笔画凌乱度']].forEach(function (p) {
       var el = $(p[0]); if (!el) return;
-      el.addEventListener('input', function () {
+      function sync() {
         var lab = el.parentNode.querySelector('label');
         if (lab) lab.textContent = p[1] + ' (' + el.value + '%)';
-      });
+        // 填充比例跟随 value：左紫右灰，圆点与填充对齐
+        el.style.setProperty('--pct', el.value + '%');
+      }
+      el.addEventListener('input', sync);
+      sync(); // 初始化填充，避免默认 3%/10%/5% 显示为满格
     });
     // 左侧导航：接本地页面（官网为 Vue 路由，本地用静态页）
     var NAV_TARGET = { '超级DIY': 'superdiy.html', '教程': 'guide.html', 'FAQ': 'guide.html', '分享': '#' };
