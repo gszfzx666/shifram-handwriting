@@ -2,7 +2,8 @@
 (function (global) {
   'use strict';
 
-  const CJK_FALLBACK = '"HW_KaiTi","KaiTi","楷体","Microsoft YaHei",serif';
+  // 全部回退到随包真实字体，避免依赖本机 Office/系统字体导致部分字体“选了没反应”
+  const CJK_FALLBACK = '"HW_MaShanZheng","KaiTi","楷体","Microsoft YaHei",serif';
   const LATIN_FALLBACK = '"HW_Caveat","Segoe Print","Comic Sans MS",cursive';
 
   function F(id, label, group, family, opt) {
@@ -30,7 +31,7 @@
     F('wangqiang', '王强手写体', '中文手写', '"HW_LiuJianMaoCao"', { sizeScale: 1.02, ink: 0.92 }),
     F('ximaixihuan', '喜脉喜欢体', '中文手写', '"HW_ZCOOLXiaoWei"', { sizeScale: 0.98 }),
     F('chillzhuopig', 'ChillZhuopigtruman手写体', '其他语言', '"HW_Caveat"', { fallback: LATIN_FALLBACK, sizeScale: 1.18, slant: -0.04 }),
-    F('fanti', '繁体-辰宇落雁体', '繁体 / 日文 / 韩文', '"HW_STXingkai"', { sizeScale: 1.02, jitterScale: 1.15 }),
+    F('fanti', '繁体-辰宇落雁体', '繁体 / 日文 / 韩文', '"HW_ZCOOLQingKeHuangYou"', { sizeScale: 1.02, jitterScale: 1.15 }),
     F('riwen', '日文-TekitouPoem', '繁体 / 日文 / 韩文', '"HW_YujiSyuku"', { sizeScale: 0.98 }),
     F('hanwen', '韩文-KimjungchulScript', '繁体 / 日文 / 韩文', '"HW_NanumPenScript"', { sizeScale: 1.05 }),
     F('en_caveat', '英文-Caveat 连笔', '其他语言', '"HW_Caveat"', { fallback: LATIN_FALLBACK, sizeScale: 1.18 }),
@@ -40,8 +41,8 @@
     F('en_shadow', '英文-Shadows Into Light', '其他语言', '"HW_ShadowsIntoLight"', { fallback: LATIN_FALLBACK, sizeScale: 1.12 }),
     F('en_indie', '英文-Indie Flower', '其他语言', '"HW_IndieFlower"', { fallback: LATIN_FALLBACK }),
     F('en_dancing', '英文-Dancing Script', '其他语言', '"HW_DancingScript"', { fallback: LATIN_FALLBACK, sizeScale: 1.15 }),
-    F('en_mistral', '英文-Mistral 花体', '其他语言', '"HW_Mistral"', { fallback: LATIN_FALLBACK, sizeScale: 1.12, slant: -0.06 }),
-    F('en_pristina', '英文-Pristina 圆体', '其他语言', '"HW_Pristina"', { fallback: LATIN_FALLBACK, sizeScale: 1.16 })
+    F('en_mistral', '英文-Mistral 花体', '其他语言', '"HW_PinyonScript"', { fallback: LATIN_FALLBACK, sizeScale: 1.12, slant: -0.06 }),
+    F('en_pristina', '英文-Pristina 圆体', '其他语言', '"HW_ShadowsIntoLight"', { fallback: LATIN_FALLBACK, sizeScale: 1.16 })
   ];
 
   // 「真实-手写体 1~12」：不同真实笔迹字体 + 独立书写参数，加粗版叠加描边
@@ -52,12 +53,12 @@
     ['"HW_LiuJianMaoCao"', { sizeScale: 1.0, jitterScale: 1.2, ink: 0.9 }],
     ['"HW_KleeOne"', { sizeScale: 0.93, jitterScale: 0.8, bold: 0.25 }],
     ['"HW_ZCOOLKuaiLe"', { sizeScale: 0.98, jitterScale: 0.9 }],
-    ['"HW_STXingkai"', { sizeScale: 1.03, jitterScale: 1.15 }],
-    ['"HW_FZShuTi"', { sizeScale: 1.04, jitterScale: 1.1, slant: 0.03 }],
-    ['"HW_YouYuan"', { sizeScale: 0.96, jitterScale: 0.85 }],
-    ['"HW_XinWei"', { sizeScale: 1.02, jitterScale: 1.05, slant: -0.03 }],
-    ['"HW_ZCOOLXiaoWei"', { sizeScale: 0.97, jitterScale: 0.95 }],
-    ['"HW_STKaiti"', { sizeScale: 0.95, jitterScale: 0.9, bold: 0.2 }]
+    ['"HW_ZCOOLQingKeHuangYou"', { sizeScale: 1.03, jitterScale: 1.15 }],
+    ['"HW_ZCOOLXiaoWei"', { sizeScale: 1.04, jitterScale: 1.1, slant: 0.03 }],
+    ['"HW_YujiSyuku"', { sizeScale: 0.96, jitterScale: 0.85 }],
+    ['"HW_LongCang"', { sizeScale: 1.02, jitterScale: 1.05, slant: -0.03 }],
+    ['"HW_MaShanZheng"', { sizeScale: 0.97, jitterScale: 0.95 }],
+    ['"HW_KleeOne"', { sizeScale: 0.95, jitterScale: 0.9, bold: 0.2 }]
   ];
 
   const LIST = [];
@@ -98,9 +99,9 @@
     'HW_OfficialRecon',
     'HW_zx',
     'HW_MaShanZheng', 'HW_ZhiMangXing', 'HW_LongCang', 'HW_LiuJianMaoCao',
-    'HW_ZCOOLKuaiLe', 'HW_ZCOOLXiaoWei', 'HW_KleeOne', 'HW_YujiSyuku',
+    'HW_ZCOOLKuaiLe', 'HW_ZCOOLXiaoWei', 'HW_ZCOOLQingKeHuangYou', 'HW_KleeOne', 'HW_YujiSyuku',
     'HW_NanumPenScript', 'HW_Caveat', 'HW_Kalam', 'HW_PatrickHand',
-    'HW_GloriaHallelujah', 'HW_ShadowsIntoLight', 'HW_IndieFlower', 'HW_DancingScript'
+    'HW_GloriaHallelujah', 'HW_ShadowsIntoLight', 'HW_IndieFlower', 'HW_DancingScript', 'HW_PinyonScript'
   ];
 
   async function preload(onProgress) {

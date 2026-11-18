@@ -17,6 +17,9 @@
 @font-face{font-family:"HW_ShadowsIntoLight";src:url("../fonts/ShadowsIntoLight_400Regular.ttf") format("truetype");font-display:block}
 @font-face{font-family:"HW_IndieFlower";src:url("../fonts/IndieFlower_400Regular.ttf") format("truetype");font-display:block}
 @font-face{font-family:"HW_DancingScript";src:url("../fonts/DancingScript_400Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_ZCOOLQingKeHuangYou";src:url("../fonts/ZCOOLQingKeHuangYou-Regular.ttf") format("truetype");font-display:block}
+@font-face{font-family:"HW_PinyonScript";src:url("../fonts/PinyonScript-Regular.ttf") format("truetype");font-display:block}
+/* 以下为系统字体声明，仅在本机确实安装时生效；字体表已不再依赖它们 */
 @font-face{font-family:"HW_STXingkai";src:local("STXingkai"),local("华文行楷");font-display:block}
 @font-face{font-family:"HW_KaiTi";src:local("KaiTi"),local("楷体"),local("simkai");font-display:block}
 @font-face{font-family:"HW_STKaiti";src:local("STKaiti"),local("华文楷体");font-display:block}
